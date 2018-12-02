@@ -135,7 +135,7 @@ int main(void)
 
 		if (position == 7 || position == 22 || position == 36)
 		{
-			chance = rand() % 9;
+			chance = rand() % 10;
 
    			switch(chance) {
 		      case 1 :
@@ -168,6 +168,10 @@ int main(void)
 		         //printf("Shrewsbury Road\n" );
 		         position = 39;
 		         break;
+		      case 9 :
+		         //printf("Shrewsbury Road\n" );
+		         position -= 3;
+		         break;
 		    }
 		} else if (position == 30) {
 			position = 10;
@@ -178,7 +182,7 @@ int main(void)
 	for (int i = 0; i < 40; ++i)
 	{
 		freq = count[i] / 10000.0f;
-		printf("Freq: %lf\n", freq);
+		printf("Freq Of %s: %lf\n", streets[i], freq);
 	}
     return 0;
 
