@@ -8,6 +8,7 @@ int main(void)
 	unsigned int position = 0;
 	int count[40] = {0};
 	float freq;
+	int chance;
 
 	// Street names array
 	char *streets[40];
@@ -95,6 +96,18 @@ int main(void)
 	prices[38] = 100;
 	prices[39] = 400;
 
+	// Chance cards array
+	//int chance[9];
+	//chance[0] = 1; // Advance to Go
+	//chance[1] = 2; // Advance to Henry Street
+	//chance[2] = 3; // Advance to Dawson Street 
+	//chance[3] = 4; // Advance to Nearest Utility
+	//chance[4] = 5; // Advance to Nearest Railroad
+	//chance[5] = 6; // Go back 3 places
+	//chance[6] = 7; // Advance to Jail
+	//chance[7] = 8; // Advance to Busarus
+	//chance[8] = 9; // Advance to Shrewsbury Road
+
 
 	for (int i = 0; i < 10000; ++i)
 	{
@@ -104,6 +117,7 @@ int main(void)
 		
 
 		position += total_roll;
+		//printf("position: %d\n", position);
 
 		// Setting position
 		if (position <= 40) {
@@ -117,6 +131,47 @@ int main(void)
 			//printf("Street: %s\n", streets[--position]);
 			++count[--position];
 
+		}
+
+		if (position == 7 || position == 22 || position == 36)
+		{
+			chance = rand() % 9;
+
+   			switch(chance) {
+		      case 1 :
+		         //printf("Go!\n" );
+		         position = 0;
+		         break;
+		      case 2 :
+		         //printf("Henry Street\n" );
+		         position = 24;
+		         break;
+		      case 3 :
+		         //printf("Dawson Street\n" );
+		         position = 11;
+		         break;
+		      case 4 :
+		         //printf("Nearest Utility" );
+		         break;
+		      case 5 :
+		         //printf("Nearest Railroad\n" );
+		         break;
+		      case 6 :
+		         //printf("Jail!\n" );
+		         position = 10;
+		         break;
+		      case 7 :
+		         //printf("Busarus\n" );
+		         position = 5;
+		         break;
+		      case 8 :
+		         //printf("Shrewsbury Road\n" );
+		         position = 39;
+		         break;
+		    }
+		} else if (position == 30) {
+			position = 10;
+			//printf("Go To Jail!\n");
 		}
 	}
 
