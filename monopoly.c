@@ -1,0 +1,130 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+ 
+int main(void)
+{ 
+	// Vars
+	unsigned int position = 0;
+	int count[40] = {0};
+	float freq;
+
+	// Street names array
+	char *streets[40];
+	streets[0] = "Go";
+	streets[1] = "Crumlin";
+	streets[2] = "Community Chest";
+	streets[3] = "Kimmage";
+	streets[4] = "Income Tax";
+	streets[5] = "Busarus";
+	streets[6] = "Rathgar";
+	streets[7] = "Chance";
+	streets[8] = "South Circular Road";
+	streets[9] = "Rathmines";
+	streets[10] = "Jail";
+	streets[11] = "Dawson Street";
+	streets[12] = "Electric Company (ESB)";
+	streets[13] = "Kildare Street";
+	streets[14] = "Nassau Street";
+	streets[15] = "Dublin Airport";
+	streets[16] = "Pearse Street";
+	streets[17] = "Community Chest";
+	streets[18] = "Dame Street";
+	streets[19] = "Westmoreland Street";
+	streets[20] = "Free Parking";
+	streets[21] = "Abbey Street";
+	streets[22] = "Chance";
+	streets[23] = "Capel Street";
+	streets[24] = "Henry Street";
+	streets[25] = "Heuston Station";
+	streets[26] = "Talbot Street";
+	streets[27] = "North Earl Street";
+	streets[28] = "Water Works (Irish Water)";
+	streets[29] = "O'Connel Street";
+	streets[30] = "Go To Jail";
+	streets[31] = "Georges Street";
+	streets[32] = "Wicklow Street";
+	streets[33] = "Community Chest";
+	streets[34] = "Grafton Street";
+	streets[35] = "Shannon Airport";
+	streets[36] = "Chance";
+	streets[37] = "Ailesbury Road";
+	streets[38] = "Super Tax";
+	streets[39] = "Shrewsbury Road";
+
+	// Street prices array
+	int prices[40];
+	prices[0] = 0;
+	prices[1] = 60;
+	prices[2] = 0;
+	prices[3] = 60;
+	prices[4] = 200;
+	prices[5] = 200;
+	prices[6] = 100;
+	prices[7] = 0;
+	prices[8] = 100;
+	prices[9] = 120;
+	prices[10] = 0;
+	prices[11] = 140;
+	prices[12] = 150;
+	prices[13] = 140;
+	prices[14] = 160;
+	prices[15] = 200;
+	prices[16] = 180;
+	prices[17] = 0;
+	prices[18] = 180;
+	prices[19] = 200;
+	prices[20] = 0;
+	prices[21] = 220;
+	prices[22] = 0;
+	prices[23] = 220;
+	prices[24] = 240;
+	prices[25] = 200;
+	prices[26] = 260;
+	prices[27] = 260;
+	prices[28] = 150;
+	prices[29] = 280;
+	prices[30] = 0;
+	prices[31] = 300;
+	prices[32] = 300;
+	prices[33] = 0;
+	prices[34] = 320;
+	prices[35] = 200;
+	prices[36] = 0;
+	prices[37] = 350;
+	prices[38] = 100;
+	prices[39] = 400;
+
+
+	for (int i = 0; i < 10000; ++i)
+	{
+		int dice_one = rand() % 7;
+		int dice_two = rand() % 7;
+		int total_roll = dice_one + dice_two;
+		
+
+		position += total_roll;
+
+		// Setting position
+		if (position <= 40) {
+
+			//printf("Street: %s\n", streets[--position]);
+			++count[--position];
+		
+		} else {
+
+			position -= 40;
+			//printf("Street: %s\n", streets[--position]);
+			++count[--position];
+
+		}
+	}
+
+	for (int i = 0; i < 40; ++i)
+	{
+		freq = count[i] / 10000.0f;
+		printf("Freq: %lf\n", freq);
+	}
+    return 0;
+
+}
